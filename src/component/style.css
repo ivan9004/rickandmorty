@@ -1,0 +1,98 @@
+.pagination a {
+    color: black;
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+  }
+  
+  .pagination a.active {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .pagination a:hover:not(.active) {background-color: #ddd;}
+
+  .resultContainer{
+    border-radius: 25px;
+    background:rgb(62, 65, 73);
+  }
+
+  #card{
+    background-color: #857C7A;
+    width: 20rem;
+    height: 31.2rem;
+    border: solid;
+    border-Radius: 25px;
+    padding: 20px;
+  }
+
+  #linkTitulo{
+      color: rgb(205, 195, 50);
+  }
+
+  #linkLocation{
+      color: rgb(10, 10, 10);
+      
+  }
+ #Dead{
+    background-color: rgb(199, 8, 2);
+    width: 15px;
+    height: 15px;
+    border: solid;
+    border-radius: 25px;
+    position: absolute;
+    left: 90px;
+    top: 354px;
+ }
+ #Alive{
+    background-color: rgb(9, 247, 9);
+    width: 15px;
+    height: 15px;
+    border: solid;
+    border-radius: 25px;
+    position: absolute;
+    left: 90px;
+    top: 354px;
+ }
+ #unknown{
+
+    background-color: rgb(10, 10, 10);
+    width: 15px;
+    height: 15px;
+    border: solid;
+    border-radius: 25px;
+    position: absolute;
+    left: 78px;
+    top: 354px;
+
+ }
+ #footer{
+    background-color: rgb(178, 209, 178);
+    width: 7rem;
+    height: 2rem;
+    border: solid;
+    border-radius: 25px;
+    position: absolute;
+    left: 100px;
+    top: 450px;
+ }
+
+ #linkLocation:hover {
+    color: blanchedalmond;
+  }
+  #linkTitulo:hover{
+    color: blanchedalmond;
+  }
+
+  @media screen and (max-width: 700px) {
+    #card {
+      background-color: #857C7A;
+    }
+  }
+  
+  /* On screens that are 600px or less, set the background color to olive */
+  @media screen and (max-width: 600px) {
+    #card {
+      background-color:#857C7A
+    } 
+  }
