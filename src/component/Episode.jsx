@@ -1,8 +1,6 @@
-
 import React, { Component } from 'react';
 import axios from "axios";
 import ReactPaginate from 'react-paginate';
-import "./style.css";
 
 export default class Episode extends Component {
     constructor(props) {
@@ -27,9 +25,11 @@ export default class Episode extends Component {
             const slice = data.episode.slice(this.state.offset, this.state.offset + this.state.perPage)
             const postData = slice.map(character =>
                 <React.Fragment>
-                    <ul lass='list-group'>
-                        <li class="list-group-item list-group-item-action"><a href={character}>{character}</a></li>
-                    </ul>
+                    <center>
+                        <ul lass='list-group'>
+                            <li class="list-group-item list-group-item-action"><a href={character}>{character}</a></li>
+                        </ul>
+                    </center>
                 </React.Fragment>
             )
             this.setState({
@@ -59,18 +59,18 @@ export default class Episode extends Component {
     render() {
         return (
             <div className='paginator'>
-                    {this.state.postData}
-                    <ReactPaginate
-                        previousLabel={"<< "}
-                        nextLabel={" >>"}
-                        breakLabel={"..."}
-                        breakClassName={"break-me"}
-                        pageCount={this.state.pageCount}
-                        onPageChange={this.handlePageClick}
-                        containerClassName={"pagination"}
-                        subContainerClassName={"pages pagination"}
-                        activeClassName={"active"}
-                    />
+                {this.state.postData}
+                <ReactPaginate
+                    previousLabel={"<< "}
+                    nextLabel={" >>"}
+                    breakLabel={"..."}
+                    breakClassName={"break-me"}
+                    pageCount={this.state.pageCount}
+                    onPageChange={this.handlePageClick}
+                    containerClassName={"pagination"}
+                    subContainerClassName={"pages pagination"}
+                    activeClassName={"active"}
+                />
             </div>
         );
     }
