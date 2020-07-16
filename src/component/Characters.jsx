@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getCharactersAction, nextCharacter, beforeCharacter } from '../redux/charactersDuck';
+import { getCharactersAction, nextCharacter, beforeCharacter, getById } from '../redux/charactersDuck';
 import { Card, CardColumns } from 'react-bootstrap';
 import "../styles/styles.scss"
 import {
@@ -21,7 +21,6 @@ const Characters = () => {
 
     const characters = useSelector(store => store.characters.characters)
 
-
     return (
         <Router>
             <div>
@@ -31,12 +30,12 @@ const Characters = () => {
                             <th><button class="btn btn-outline-secondary" onClick={() => dispatch(beforeCharacter())}> Anteriro </button></th>
                             <th><Link to='/'><button class="btn btn-outline-secondary" onClick={() => dispatch(getCharactersAction())}>Ver personajes</button></Link></th>
                             <th><button class="btn btn-outline-secondary" onClick={() => dispatch(nextCharacter())}>Sigiente</button></th>
-
                         </tr>
                     </table>
                 </center>
                 <hr></hr>
-
+                <input type='text' class="form-control" placeholder='Buscar por id' onChange={(e) => dispatch(getById(e.target.value))} />
+                <hr></hr>
                 <CardColumns id='cardsGroup'>
                     <center>
                         {

@@ -2,12 +2,14 @@ import axios from 'axios';
 
 const dataInicial = {
     characters: [],
-    offset: 1
+    offset: 1,
+    id: 0
 }
 
 const GET_CHARACTERS = 'GET_CHARACTERS'
 const NEXT_CHARACTERS = 'NEXT_CHARACTERS'
 const BEFORE_CHARACTERS = 'BEFORE_CHARACTERS'
+const GET_CHARACTERS_BYID = 'GET_CHARACTERS_BYID'
 
 export default function characterReducer(state = dataInicial, action) {
 
@@ -18,6 +20,8 @@ export default function characterReducer(state = dataInicial, action) {
             return { ...state, characters: action.payload.characters, offset: action.payload.offset }
         case BEFORE_CHARACTERS:
             return { ...state, characters: action.payload.characters, offset: action.payload.offset }
+        case GET_CHARACTERS_BYID:
+            return { ...state, characters: action.payload }
         default:
             return state
     }
@@ -71,4 +75,32 @@ export const beforeCharacter = () => async (dispatch, getState) => {
     } catch (error) {
         console.log(error)
     }
+}
+
+export const getById = (id) => async (dispatch, getState) => {
+    if (id) {
+        try {
+            const res = await axios.get(`https://rickandmortyapi.com/api/character/${id}`)
+            dispatch({
+                type: GET_CHARACTERS_BYID,
+                payload: res.data.results.characters
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    } else {
+
+        const offset = 1;
+
+        try {
+            const res = await axios.get(`https://rickandmortyapi.com/api/character/?page=${offset}`)
+            dispatch({
+                type: GET_CHARACTERS,
+                payload: res.data.results
+            })
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
 }
